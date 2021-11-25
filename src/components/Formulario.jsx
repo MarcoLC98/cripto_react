@@ -7,22 +7,24 @@ import useCriptomoneda from '../hooks/useCriptomoneda';
 import axios from 'axios';
 
 const Boton = styled.input`
-    margin-top: 20px;
-    font-weight: bold;
-    font-size: 20px;
-    padding: 10px;
-    background-color: #66a2fe;
-    border: none;
-    width: 100%;
-    border-radius: 10px;
-    color: #FFF;
-    transition: background-color .3s ease;
+  font-family: "Cairo", sans-serif;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+  background-color: #a63c00;
+  border: none;
+  width: 100%;
+  border-radius: 10px;
+  color: black;
+  transition: background-color 0.3s ease;
 
-    &:hover {
-        background-color: #326AC0;
-        cursor:pointer;
-    }
-`
+  &:hover {
+    color: #a63c00;
+    background-color: black;
+    cursor: pointer;
+  }
+`;
 
 const Formulario = ({guardarMoneda,  guardarCriptomoneda }) => {
 
@@ -31,10 +33,10 @@ const Formulario = ({guardarMoneda,  guardarCriptomoneda }) => {
     const [ error, guardarError] = useState(false);
 
     const MONEDAS = [
-        { codigo: 'USD', nombre: 'Dolar de Estados Unidos' },
-        { codigo: 'MXN', nombre: 'Peso Mexicano' },
+        { codigo: 'USD', nombre: 'U$D' },
+        { codigo: 'ARS', nombre: 'Peso' },
         { codigo: 'EUR', nombre: 'Euro' },
-        { codigo: 'GBP', nombre: 'Libra Esterlina' }
+        { codigo: 'GBP', nombre: 'Libra' }
     ];
 
     // Utilizar useMoneda
@@ -82,7 +84,7 @@ const Formulario = ({guardarMoneda,  guardarCriptomoneda }) => {
 
             <SelectCripto />
 
-            <Boton
+            <Boton 
                 type="submit"
                 value="Calcular"
             />

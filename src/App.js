@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import axios from 'axios';
-import imagen from './cryptomonedas.png';
 import Formulario from './components/Formulario';
 import Cotizacion from './components/Cotizacion';
 import Spinner from './components/Spinner';
@@ -16,16 +15,12 @@ const Contenedor = styled.div`
   }
 `;
 
-const Imagen = styled.img`
-  max-width: 100%;
-  margin-top: 5rem;
-`;
 const Heading = styled.h1`
   font-family: 'Bebas Neue', cursive;
-  color: #FFF;
+  color: rgb(0,0,0);
   text-align:left;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 70px;
   margin-bottom: 50px;
   margin-top: 80px;
 
@@ -33,7 +28,7 @@ const Heading = styled.h1`
     content: '';
     width: 100px;
     height: 6px;
-    background-color: #66A2FE;
+    background-color: #A63C00;
     display:block;
   }
 `;
@@ -45,57 +40,61 @@ function App() {
   const [resultado, guardarResultado] = useState({});
   const [cargando, guardarCargando] = useState(false);
 
-  useEffect( () => {
+  useEffect(() => {
 
-      const cotizarCriptomoneda = async () => {
-          // evitamos la ejecución la primera vez
-          if(moneda === '') return;
+    const cotizarCriptomoneda = async () => {
+      // evitamos la ejecución la primera vez
+      if (moneda === '') return;
 
-          // consultar la api para obtener la cotizacion
-          const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
+      // consultar la api para obtener la cotizacion
+      const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
 
-          const resultado = await axios.get(url);
+      const resultado = await axios.get(url);
 
-          // mostrar el spinner
-          guardarCargando(true);
+      // mostrar el spinner
+      guardarCargando(true);
 
-          // ocultar el spinner y mostrar el resultado
-          setTimeout(() => {
+      // ocultar el spinner y mostrar el resultado
+      setTimeout(() => {
 
-            // cambiar el estado de cargando
-            guardarCargando(false);
+        // cambiar el estado de cargando
+        guardarCargando(false);
 
-            // guardar cotizacion
-            guardarResultado(resultado.data.DISPLAY[criptomoneda][moneda] );
-          }, 3000);
+        // guardar cotizacion
+        guardarResultado(resultado.data.DISPLAY[criptomoneda][moneda]);
+      }, 3000);
 
-          
-      }
-      cotizarCriptomoneda();
+
+    }
+    cotizarCriptomoneda();
   }, [moneda, criptomoneda]);
 
   // Mostrar spinner o resultado
-  const componente = (cargando) ? <Spinner /> :  <Cotizacion  resultado={resultado} />
+  const componente = (cargando) ? <Spinner /> : <Cotizacion resultado={resultado} />
 
   return (
     <Contenedor>
-        <div>
-          <Imagen 
-            src={imagen}
-            alt="imagen cripto"
-          />
-        </div>
-        <div>
-            <Heading>Cotiza Criptomonedas al Instante</Heading>
+      <div className="images">
+        
+        <img className="eth" src="./eth.png" alt="etherum"></img>
+        <img className="bitcoin" src="./bitcoin.png" alt="bitcoin" ></img>
+        <img className="cardano" src="./cardano.png" alt="cardano"></img>
+        <img className="tether" src="./tether.png" alt="tether"></img>
+        <img className="xrp" src="./xrp.png" alt="xrp" ></img>
+        <img className="ripple" src="./ripple.png" alt="ripple"></img>
+  
+      </div>
 
-            <Formulario 
-              guardarMoneda={guardarMoneda}
-              guardarCriptomoneda={guardarCriptomoneda}
-            />
+      <div>
+        <Heading>Cotizacion cripto</Heading>
 
-            {componente}
-            
-        </div>
+        <Formulario
+          guardarMoneda={guardarMoneda}
+          guardarCriptomoneda={guardarCriptomoneda}
+        />
+        {componente}
+
+      </div>
     </Contenedor>
   );
 }
