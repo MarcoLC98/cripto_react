@@ -74,17 +74,17 @@ function App() {
 
   return (
     <Contenedor>
-      <div className="images">
-        
-        <img className="eth" src="./eth.png" alt="etherum"></img>
+      <header className="images">
+        <img src="./cripto.png" alt="" className="criptos"></img>
+        {/* <img className="eth" src="./eth.png" alt="etherum"></img>
         <img className="bitcoin" src="./bitcoin.png" alt="bitcoin" ></img>
         <img className="cardano" src="./cardano.png" alt="cardano"></img>
         <img className="tether" src="./tether.png" alt="tether"></img>
         <img className="xrp" src="./xrp.png" alt="xrp" ></img>
-        <img className="ripple" src="./ripple.png" alt="ripple"></img>
-  
-      </div>
+        <img className="ripple" src="./ripple.png" alt="ripple"></img> */}
+      </header>
 
+  
       <div>
         <Heading>Cotizacion cripto</Heading>
 
@@ -92,9 +92,11 @@ function App() {
           guardarMoneda={guardarMoneda}
           guardarCriptomoneda={guardarCriptomoneda}
         />
+       
         {componente}
-
+          
       </div>
+      
     </Contenedor>
   );
 }

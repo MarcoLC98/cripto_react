@@ -1,5 +1,5 @@
 body {
-  background-color: #d1cfcffd;
+  background: linear-gradient(to right, #304352, #d7d2cc);
 }
 .error {
   background-color: #fc0d00;
@@ -14,29 +14,15 @@ body {
   color: white;
 }
 .resultado p {
-  font-size: 18px!important;
+  font-size: 18px !important;
 }
 .resultado p span {
   font-weight: bold;
 }
-p.precio{
-  font-size: 30px!important;
+p.precio {
+  font-size: 30px !important;
 }
-.images {
-  padding-top: 50%;
-  margin:auto;
-}
-.images * {
-  transform: translate (-50%, -50%);
-  padding: 30px;
-}
-.images *:hover{
-  border-radius: 50%;
-  box-shadow: 0 0 15px;
-}
-.tether{
-  width:50px;
-}
-.xrp{
-  width: 50px;
+.criptos{
+  padding-top: 90px;
+  width: 100%;
 }
